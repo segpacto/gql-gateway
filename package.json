@@ -5,6 +5,8 @@
   "author": "Ivan Martinez Pupo <ivan.martinez_pupo@segpacto@yahoo.es>",
   "scripts": {
     "start": "nodemon index.js",
+    "sample1": "node examples/simple.js",
+    "sample2": "node examples/advanced.js",
     "lint": "npx standard",
     "test": "jest --coverage --detectOpenHandles --runInBand --testRegex=test/.*\\.spec\\.js --testPathIgnorePatterns=test/.*.snap",
     "format": "npx standard --fix"
