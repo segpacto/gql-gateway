@@ -12,10 +12,10 @@ At the moment, it connects to the MOPS API-Gateway to extract all Swagger defini
 
 
 ### How this GraphQl-Gateway works
-1. - Read all swagger endpoints passed that are services REST available.
-2. - Retrieve from each one of the services published their Swagger Json, build GraphQl Types, Queries and Mutations, as well as auto-generate the resolvers.
-3. - Merge our local GraphQl definitions with the agreggations and extensions along with the previous generated ones.
-4. - Publish the GraphQl server with all agreggations. 
+1. Read all swagger endpoints passed that are services REST available.
+2. Retrieve from each one of the services published their Swagger Json, build GraphQl Types, Queries and Mutations, as well as auto-generate the resolvers.
+3. Merge our local GraphQl definitions with the agreggations and extensions along with the previous generated ones.
+4. Publish the GraphQl server with all agreggations. 
 
 ### Techical Explanation
 Below, we describe how to interact between services using agreggations(relations). In this case we use the `Customer` and `Rental` services.
