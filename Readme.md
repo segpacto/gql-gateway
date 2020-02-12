@@ -17,7 +17,7 @@ At the moment, it connects to the MOPS API-Gateway to extract all Swagger defini
 3 - Merge our local GraphQl definitions with the agreggations and extensions along with the previous generated ones.
 4 - Publish the GraphQl server with all agreggations. 
 
-### MOPS Techical Explanation
+### Techical Explanation
 Below, we describe how to interact between services using agreggations(relations). In this case we use the `Customer` and `Rental` services.
 
 1. `Customer` service
