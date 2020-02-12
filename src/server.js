@@ -20,6 +20,10 @@ module.exports = async ({
   logger
 }) => {
   logger = logger || console
+
+  if (!endpointsList) {
+    throw new Error('The parameter endpointsList is required')
+  }
   // Building list of Schemas by retrieving the remote JSON swagger and adding
   // the local Schema (which in theory should contain relations and resolvers to retrieve this relations)
   const { resolvedSchemas, services } = await schemaLoader({ localSchema, remoteRestServices: endpointsList })
