@@ -240,16 +240,13 @@ User: {
 - Get user + products (Ex aggregation)
 
 ```graph
-mutation {
-  post_user_search(body:{}) {
-    data {
-      firstName,
-      lastName,
-      products {
-        data {
-          product
-        }
-      }
+query {
+  get_users {
+    firstname,
+    lastname,
+    products {
+      name,
+      type
     }
   }
 }
