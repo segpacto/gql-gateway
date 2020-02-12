@@ -3,7 +3,6 @@
 ### Description 
 This repository is a GraphQL Gateway that allows the interaction with Swagger based REST APIs.
 Through this gateway, it is possible to easily establish aggregations between the REST services using GraphQL generated queries and types, and serve all as part of one response.  
-At the moment, it connects to the MOPS API-Gateway to extract all Swagger definitions related to MOPS REST services.
 
 ### Knowledge Base
 - [Swagger](https://swagger.io/docs/)
