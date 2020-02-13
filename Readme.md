@@ -121,7 +121,11 @@ gateway({ resolvers, localSchema, endpointsList, ApolloServerConfig })
 
 #### Using the `apolloServerConfig` parameter:
 ```js 
-const ApolloServerConfig = { playground: { endpoint: config.playgroundBasePath } }
+const apolloServerConfig = { 
+  playground: { 
+    endpoint: config.playgroundBasePath 
+  } 
+}
 ```
 
 ### Technical Explanation
