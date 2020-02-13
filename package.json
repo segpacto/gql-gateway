@@ -32,7 +32,7 @@
     "gateway",
     "swagger"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "main": "index.js",
   "name": "gql-gateway",
   "repository": {
