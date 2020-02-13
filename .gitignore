@@ -50,8 +50,6 @@ typings/
 .env
 .history
 
-index.js
-
 config/
 resolvers/
 types/
