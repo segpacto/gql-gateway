@@ -48,5 +48,5 @@
     "lint": "npx standard",
     "test": "jest --coverage --detectOpenHandles --runInBand --testRegex=test/.*\\.spec\\.js --testPathIgnorePatterns=test/.*.snap"
   },
-  "version": "1.0.2"
+  "version": "1.0.3"
 }
