@@ -1,12 +1,9 @@
 {
   "name": "gql-gateway",
-  "main": "gateway.js",
+  "main": "index.js",
   "version": "1.0.0",
   "author": "Ivan Martinez Pupo <ivan.martinez_pupo@segpacto@yahoo.es>",
   "scripts": {
-    "start": "nodemon index.js",
-    "sample1": "node examples/simple.js",
-    "sample2": "node examples/advanced.js",
     "lint": "npx standard",
     "test": "jest --coverage --detectOpenHandles --runInBand --testRegex=test/.*\\.spec\\.js --testPathIgnorePatterns=test/.*.snap",
     "format": "npx standard --fix"
@@ -18,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:segpacto/gql-gateway.git"
+    "url": "git+ssh://git@github.com/segpacto/gql-gateway.git"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
@@ -36,5 +33,15 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
     "swagger-to-graphql": "^4.0.2"
-  }
+  },
+  "description": "### Description  This repository is a GraphQL Gateway that allows the interaction with Swagger based REST APIs. Through this gateway, it is possible to easily establish aggregations between the REST services using GraphQL generated queries and types, and serve all as part of one response.",
+  "bugs": {
+    "url": "https://github.com/segpacto/gql-gateway/issues"
+  },
+  "homepage": "https://github.com/segpacto/gql-gateway#readme",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "license": "ISC"
 }
