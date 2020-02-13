@@ -1,30 +1,12 @@
 {
-  "name": "gql-gateway",
-  "main": "index.js",
-  "version": "1.0.1",
-  "author": "Ivan Martinez Pupo <ivan.martinez_pupo@segpacto@yahoo.es>",
-  "scripts": {
-    "lint": "npx standard",
-    "test": "jest --coverage --detectOpenHandles --runInBand --testRegex=test/.*\\.spec\\.js --testPathIgnorePatterns=test/.*.snap",
-    "format": "npx standard --fix"
+  "author": {
+    "name": "Ivan Martinez Pupo",
+    "email": "ivan.martinez_pupo@segpacto@yahoo.es"
   },
-  "keywords": [
-    "graphql",
-    "gateway",
-    "swagger"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/segpacto/gql-gateway.git"
+  "bugs": {
+    "url": "https://github.com/segpacto/gql-gateway/issues"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.2",
-    "standard": "^14.3.1",
-    "apollo-server-testing": "^2.9.16",
-    "dotenv": "^8.2.0",
-    "jest": "^25.1.0",
-    "nock": "^11.8.2"
-  },
+  "bundleDependencies": false,
   "dependencies": {
     "apollo-server": "^2.9.16",
     "graphql": "^14.5.8",
@@ -34,14 +16,37 @@
     "request-promise": "^4.2.5",
     "swagger-to-graphql": "^4.0.2"
   },
+  "deprecated": false,
   "description": "### Description  This repository is a GraphQL Gateway that allows the interaction with Swagger based REST APIs. Through this gateway, it is possible to easily establish aggregations between the REST services using GraphQL generated queries and types, and serve all as part of one response.",
-  "bugs": {
-    "url": "https://github.com/segpacto/gql-gateway/issues"
+  "devDependencies": {
+    "apollo-server-testing": "^2.9.16",
+    "dotenv": "^8.2.0",
+    "jest": "^25.1.0",
+    "nock": "^11.8.2",
+    "nodemon": "^2.0.2",
+    "standard": "^14.3.1"
   },
   "homepage": "https://github.com/segpacto/gql-gateway#readme",
-  "directories": {
-    "example": "examples",
-    "test": "test"
+  "keywords": [
+    "graphql",
+    "gateway",
+    "swagger"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "gql-gateway",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/segpacto/gql-gateway.git"
   },
-  "license": "ISC"
+  "files": [
+    "index.js",
+    "helpers"
+  ],
+  "scripts": {
+    "format": "npx standard --fix",
+    "lint": "npx standard",
+    "test": "jest --coverage --detectOpenHandles --runInBand --testRegex=test/.*\\.spec\\.js --testPathIgnorePatterns=test/.*.snap"
+  },
+  "version": "1.0.2"
 }
