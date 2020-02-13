@@ -16,7 +16,7 @@ module.exports = async ({ localSchema, remoteRestServices }) => {
     })
     const swaggerSchema = JSON.parse(swaggerResponse)
     const swaggerUrl = new url.URL(service.url)
-    
+
     if (!swaggerSchema.host) {
       swaggerSchema.host = swaggerUrl.host
     }

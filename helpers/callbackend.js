@@ -18,7 +18,7 @@ module.exports = async ({ context: { req }, requestOptions }) => {
   const { headers: { authorization } } = req
   const headers = { authorization }
   const bodyAndHeaders = getBodyAndHeaders(body, bodyType, headers)
-  
+
   const response = await fetch(url, {
     method,
     ...bodyAndHeaders
