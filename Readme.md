@@ -112,18 +112,19 @@ gateway({ resolvers, localSchema, endpointsList, ApolloServerConfig })
 | `logger`             | `console`                   | Default logger is the console |
 
 
-##### Format of `localSchema` parameter
+#### Format of `localSchema` parameter:
 | Name     | Default     | Description |
 | -------- | ----------- | ------------- |
 | `name`   | `required`  | Is used to identify the service |
 | `url`    | `required`  | Url of the service swagger in `json` format |
 | `headers`| `empty`     | Headers passed to request the json swagger service, in case any kind of particular auth is needed |
 
-##### Format of `apolloServerConfig`
- Ex : ```js const ApolloServerConfig = { playground: { endpoint: config.playgroundBasePath } }```
+#### Using the `apolloServerConfig` parameter:
+```js 
+const ApolloServerConfig = { playground: { endpoint: config.playgroundBasePath } }
+```
 
-
-### Techical Explanation
+### Technical Explanation
 Below, we describe how to interact between services swagger based using agreggations(relations). In this case we use the `User` and `Product` services.
 
 1. `User` service
