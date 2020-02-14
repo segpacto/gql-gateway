@@ -118,7 +118,7 @@ gateway({ resolvers, localSchema, endpointsList, ApolloServerConfig })
 | `name`     | `required`  | Is used to identify the service |
 | `url`      | `required`  | Url of the service swagger in `json` format |
 | `headers`  | `empty`     | Headers passed to request the json swagger service, in case any kind of particular auth is needed |
-| `onLoaded` | `empty`     | Is a function that process the swaggerJson once is loaded so changes on the flight can be introduced. `Must` return the back swaggerJson |
+| `onLoaded` | `empty`     | Function that process the swaggerJson once is loaded so changes on the flight can be introduced. If passed `Must` return the swaggerJson back |
 
 #### Format of function `onLoaded` parameters:
 | Name          | Default               | Description |
