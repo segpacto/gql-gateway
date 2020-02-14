@@ -112,12 +112,29 @@ gateway({ resolvers, localSchema, endpointsList, ApolloServerConfig })
 | `logger`             | `console`                   | Default logger is the console |
 
 
-#### Format of `localSchema` parameter:
-| Name     | Default     | Description |
-| -------- | ----------- | ------------- |
-| `name`   | `required`  | Is used to identify the service |
-| `url`    | `required`  | Url of the service swagger in `json` format |
-| `headers`| `empty`     | Headers passed to request the json swagger service, in case any kind of particular auth is needed |
+#### Format of `localSchema` parameters:
+| Name       | Default     | Description |
+| ---------- | ----------- | ------------- |
+| `name`     | `required`  | Is used to identify the service |
+| `url`      | `required`  | Url of the service swagger in `json` format |
+| `headers`  | `empty`     | Headers passed to request the json swagger service, in case any kind of particular auth is needed |
+| `onLoaded` | `empty`     | Is a function that process the swaggerJson once is loaded so changes on the flight can be introduced. `Must` return the back swaggerJson |
+
+#### Format of function `onLoaded` parameters:
+| Name          | Default               | Description |
+| `swaggerJson` | `Swagger JSON schema` | Contains the loaded Swagger Json schema    |
+| `service`     | `object`              | Contains the `localSchema` that was loaded |
+
+> onLoaded `function` Ex :
+```js
+const onLoaded = (swaggerJson, service) => {
+  swaggerJson.schemes = ['http', 'https']
+  return swaggerJson
+}
+const endpointsList = [
+  { name: 'pet_service', url: 'https://petstore.swagger.io/v2/swagger.json', onLoaded }
+]
+```
 
 #### Using the `apolloServerConfig` parameter:
 ```js 

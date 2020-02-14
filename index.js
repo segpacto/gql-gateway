@@ -5,7 +5,7 @@ const schemaLoader = require('./helpers/schema-loader')
 /**
  * @param {GraqhQLSchema} localSchema
  * @param {object} resolvers
- * @param {Array} endpointsList
+ * @param {Array<{name: string, url: string, headers: object, onLoaded: function (swaggerJson, service) {}}>} endpointsList
  * @param {object} apolloServer
  * @param logger,
  * @param {object} contextConfig
