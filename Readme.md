@@ -129,9 +129,10 @@ const apolloServerConfig = {
 ```
 
 ### Technical Explanation
-Below, we describe how to interact between services swagger based using agreggations(relations). In this case we use the `User` and `Product` services.
+Below, we describe how to interact between services swagger based using agreggations(relations).  
+In this example we take the `User` and `Product` services as example.
 
-1. `User` service
+#### The `User` service:
 ```
 ...
 paths:
@@ -159,7 +160,7 @@ definitions :
 ...
 ```
 
-2. `Product` service
+#### The `Product` service:
 ```
 ...
 paths:
@@ -199,7 +200,7 @@ definitions :
 ...
 ```
 
-- Once the graphql gateway read from those services json swagger endpoints, our server generates :
+Once the graphql gateway read from those services their swagger specification, our server generates the following:
 ```graph
 type Queries {
     get_products_userId(userId: String!): Products!
@@ -207,7 +208,8 @@ type Queries {
 }
 ```
 
-> Now, we need to extend the GraphQL definitions to introduce our user aggregations:
+#### Custom aggregations / relations
+The next step is to extend the GraphQL definitions to introduce our custom global aggregations:
 
 - Extend `GraphQl` Types definitions:
 ```graph
@@ -220,7 +222,7 @@ type Queries {
         user: User
     }
 ```
-> This will automatically indicate to the GraphQl server that the Type `User` will have another field named products which means, the `Product` relations.
+> This will automatically indicate to the GraphQl server that the Type `User` will have another field named products, actually the `Product` service relation.
 
 - Finally, extend `GraphQl` resolvers:
 ```js
@@ -233,7 +235,7 @@ User: {
           operation: 'query',
           fieldName: 'get_products_userId',
           args: {
-            referenceUuid: user.userId
+            userId: user.userId  // here we hook the relation identifier
           },
           context,
           info
@@ -243,7 +245,7 @@ User: {
   },
 ```
 
-- Get user + products (Ex aggregation)
+- And now we can magically query:
 
 ```graph
 query {
@@ -256,4 +258,5 @@ query {
     }
   }
 }
-````
+```
+
