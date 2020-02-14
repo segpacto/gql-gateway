@@ -4,7 +4,7 @@
 This module provides a GraphQL Gateway that allows the interaction with Swagger based REST APIs, by autogenerating and merging their GraphQL schemas. 🚀  
 Through this gateway, it is possible to easily establish aggregations between the downstream REST services using GraphQL generated types, queries and mutations.
 
-#### Pre-Requisites
+#### Related topics
 - [Swagger](https://swagger.io/docs/)
 - [GraphQl Schema Stitching](https://www.apollographql.com/docs/apollo-server/features/schema-stitching/)
 - [GraphQl Schema Delegation](https://www.apollographql.com/docs/apollo-server/features/schema-delegation/)
