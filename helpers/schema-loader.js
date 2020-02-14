@@ -6,7 +6,7 @@ const url = require('url')
 /**
  * @param {GraqhQLSchema} localSchema
  * @param {object} remoteRestServices
- * @returns {Array<{name: string, prefix: string, url: string, schema: GraphQLSchema}>}
+ * @returns {Array<{name: string, url: string, schema: GraphQLSchema}>}
  */
 module.exports = async ({ localSchema, remoteRestServices }) => {
   const schemasAvailable = remoteRestServices.map(async service => {
@@ -14,15 +14,10 @@ module.exports = async ({ localSchema, remoteRestServices }) => {
       uri: service.url,
       headers: service.headers
     })
-    const swaggerSchema = JSON.parse(swaggerResponse)
-    const swaggerUrl = new url.URL(service.url)
+    let swaggerSchema = JSON.parse(swaggerResponse)
 
-    if (!swaggerSchema.host) {
-      swaggerSchema.host = swaggerUrl.host
-    }
-
-    if (!swaggerSchema.schemes) {
-      swaggerSchema.schemes = [swaggerUrl.protocol.replace(':', '')]
+    if (service.onLoaded) {
+      swaggerSchema = service.onLoaded(swaggerSchema, service)
     }
 
     // Keep an schema copy per service
