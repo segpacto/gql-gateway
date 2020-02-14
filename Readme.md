@@ -122,6 +122,7 @@ gateway({ resolvers, localSchema, endpointsList, ApolloServerConfig })
 
 #### Format of function `onLoaded` parameters:
 | Name          | Default               | Description |
+| ------------- | --------------------- | --------------------------------------- |
 | `swaggerJson` | `Swagger JSON schema` | Contains the loaded Swagger Json schema    |
 | `service`     | `object`              | Contains the `localSchema` that was loaded |
 
