@@ -1,12 +1,11 @@
 {
   "author": {
     "name": "Ivan Martinez Pupo",
-    "email": "ivan.martinez_pupo@segpacto@yahoo.es"
+    "email": "segpacto@yahoo.es"
   },
   "bugs": {
     "url": "https://github.com/segpacto/gql-gateway/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "apollo-server": "^2.9.16",
     "graphql": "^14.5.8",
@@ -16,8 +15,7 @@
     "request-promise": "^4.2.5",
     "swagger-to-graphql": "^4.0.2"
   },
-  "deprecated": false,
-  "description": "### Description  This repository is a GraphQL Gateway that allows the interaction with Swagger based REST APIs. Through this gateway, it is possible to easily establish aggregations between the REST services using GraphQL generated queries and types, and serve all as part of one response.",
+  "description": "GraphQL Gateway that does magic on top of REST services that provides Swagger/OpenAPI specifications.",
   "devDependencies": {
     "apollo-server-testing": "^2.9.16",
     "dotenv": "^8.2.0",
