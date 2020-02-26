@@ -13,7 +13,8 @@
     "graphql-tools": "^4.0.6",
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
-    "swagger-to-graphql": "^4.0.2"
+    "swagger-to-graphql": "^4.0.2",
+    "node-fetch": "^2.6.0"
   },
   "description": "GraphQL Gateway that does magic on top of REST services that provides Swagger/OpenAPI specifications.",
   "devDependencies": {
@@ -49,5 +50,5 @@
   "standard": {
     "env": [ "jest" ]
   },
-  "version": "1.0.5"
+  "version": "1.0.6"
 }
