@@ -1,0 +1,111 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Sample Client Api",
+      "version": "1.0.0",
+      "title": "Clients API"
+    },
+    "host" : "localhost",
+    "basePath": "/client-api",
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "tags": [
+      {
+        "name": "client",
+        "description": "Client"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "definitions": {
+      "Client": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "readOnly": true
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "middleName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "salutation": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "paths": {
+      "/clients": {
+        "get": {
+          "tags": [
+            "client"
+          ],
+          "summary": "Get Clients",
+          "description": "Get all clients",
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Client"
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            }
+          }
+        }
+      },
+      "/clients/{clientId}": {
+        "get": {
+          "tags": [
+            "client"
+          ],
+          "summary": "Find a client by ID",
+          "description": "",
+          "parameters": [
+            {
+              "name": "clientId",
+              "in": "path",
+              "description": "ID of the client to be fetched",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/Client"
+              }
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      }
+    }
+  }
