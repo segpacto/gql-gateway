@@ -42,9 +42,12 @@
     "helpers"
   ],
   "scripts": {
-    "format": "npx standard --fix",
+    "lint:fix": "npx standard --fix",
     "lint": "npx standard",
-    "test": "jest --coverage --detectOpenHandles --runInBand --testRegex=test/.*\\.spec\\.js --testPathIgnorePatterns=test/.*.snap"
+    "test": "jest --coverage --detectOpenHandles --runInBand --testRegex=test/.*\\.spec\\.js --testPathIgnorePatterns=test/mocks/*.js"
   },
-  "version": "1.0.4"
+  "standard": {
+    "env": [ "jest" ]
+  },
+  "version": "1.0.5"
 }

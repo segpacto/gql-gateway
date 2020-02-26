@@ -1,7 +1,6 @@
 const { createSchema } = require('swagger-to-graphql')
 const callBackend = require('./callbackend')
 const request = require('request-promise')
-const url = require('url')
 
 /**
  * @param {GraqhQLSchema} localSchema

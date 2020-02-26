@@ -1,0 +1,159 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Reservations of Clients",
+      "version": "1.0.0",
+      "title": "Reservations API",
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "host" : "localhost",
+    "basePath": "/reservation-api",
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "tags": [
+      {
+        "name": "Reservation",
+        "description": "Reservations API"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "definitions": {
+      "Reservation": {
+        "type": "object",
+        "properties": {
+          "reservationId": {
+            "type": "integer"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateddAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "location": {
+            "type": "string"
+          }
+        }
+      },
+      "Reservations": {
+        "description": "successful operation",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Reservation"
+            }
+          },
+          "totalCount": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "paths": {
+      "/reservations/{reservationId}": {
+        "get": {
+          "tags": [
+            "Reservation"
+          ],
+          "parameters": [
+            {
+              "name": "reservationId",
+              "in": "path",
+              "description": "Uuid of the reservation",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "summary": "Return a reservation",
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/Reservation"
+              }
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/reservations/client/{clientId}": {
+        "get": {
+          "tags": [
+            "Reservation"
+          ],
+          "parameters": [
+            {
+              "name": "clientId",
+              "in": "path",
+              "description": "ID of the client",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "description": "Return list of reservations of client",
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/Reservations"
+              }
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/reservations/client/{clientId}/current": {
+        "get": {
+          "tags": [
+            "Reservation"
+          ],
+          "parameters": [
+            {
+              "name": "clientId",
+              "in": "path",
+              "description": "ID of the client",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "description": "Return the current reservation",
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/Reservation"
+              }
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      }
+    }
+  }
