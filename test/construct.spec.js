@@ -15,7 +15,8 @@ describe('Server construct', () => {
       const endpointsList = [{ name: 'petstore_service', url: 'https://no-existent-endpoint/swagger.json' }]
       await gateway({ endpointsList })
     } catch (err) {
-      expect(err.message).toBe('Error: getaddrinfo ENOTFOUND no-existent-endpoint no-existent-endpoint:443')
+      expect(err.code).toBe('ENOTFOUND')
+      expect(err.message).toBe('request to https://no-existent-endpoint/swagger.json failed, reason: getaddrinfo ENOTFOUND no-existent-endpoint no-existent-endpoint:443')
     }
   })
 
