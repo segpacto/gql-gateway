@@ -1,6 +1,6 @@
 const { createSchema } = require('swagger-to-graphql')
 const callBackend = require('./callbackend')
-const request = require('request-promise')
+const fetch = require('node-fetch')
 
 /**
  * @param {GraqhQLSchema} localSchema
@@ -9,11 +9,14 @@ const request = require('request-promise')
  */
 module.exports = async ({ localSchema, remoteRestServices }) => {
   const schemasAvailable = remoteRestServices.map(async service => {
-    const swaggerResponse = await request({
-      uri: service.url,
-      headers: service.headers
+    const swaggerResponse = await fetch(service.url, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...service.headers
+      }
     })
-    let swaggerSchema = JSON.parse(swaggerResponse)
+
+    let swaggerSchema = await swaggerResponse.json()
 
     if (service.onLoaded) {
       swaggerSchema = service.onLoaded(swaggerSchema, service)
