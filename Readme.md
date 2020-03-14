@@ -13,7 +13,7 @@ Through this gateway, it is possible to easily establish aggregations between th
 ### How this GraphQL-Gateway actually works?
 1. Read and parse the Swagger specifications from all given endpoints.
 2. For each Swagger specification auto-generate the GraphQL Types, Queries and Mutations; as well as auto-generate the APIs based resolvers.
-3. Merge our local GraphQl definitions containing the agreggations and extensions along with the previous generated schemas.
+3. Merge our local GraphQl definitions containing the aggregations and extensions along with the previous generated schemas.
 4. Serve an Apollo GraphQl server with all agreggations. 
 
 
