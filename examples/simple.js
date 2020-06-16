@@ -1,4 +1,4 @@
-const gateway = require('../src/server')
+const gateway = require('../index.js')
 
 const config = {
   port: 5000,
