@@ -1,4 +1,4 @@
-const gateway = require('../src/server')
+const gateway = require('../index.js')
 
 const resolvers = {
   Order: {
@@ -34,9 +34,9 @@ const endpointsList = [
   { name: 'pet_service', url: 'https://petstore.swagger.io/v2/swagger.json' }
 ]
 
-const ApolloServerConfig = { playground: { endpoint: config.playgroundBasePath } }
+const apolloServerConfig = { playground: { endpoint: config.playgroundBasePath } }
 
-gateway({ resolvers, localSchema, endpointsList, ApolloServerConfig })
+gateway({ resolvers, localSchema, endpointsList, apolloServerConfig })
   .then(server => server.listen(config.port))
   .then(console.log(`Service is now running at port: ${config.port}`))
   .catch(err => console.log(err))
