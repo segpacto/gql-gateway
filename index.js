@@ -39,6 +39,7 @@ module.exports = async ({
     ...apolloServerConfig,
     schema: mergedSchemas,
     context: (integrationContext) => ({
+      ...integrationContext,
       ...contextConfig,
       req: integrationContext.req,
       resolveSchema: (schameName) => {
