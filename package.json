@@ -46,7 +46,9 @@
     "test": "jest --coverage --detectOpenHandles --runInBand --testRegex=test/.*\\.spec\\.js --testPathIgnorePatterns=test/mocks/*.js"
   },
   "standard": {
-    "env": [ "jest" ]
+    "env": [
+      "jest"
+    ]
   },
-  "version": "1.0.7"
+  "version": "1.0.8"
 }
