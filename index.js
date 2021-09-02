@@ -1,6 +1,7 @@
 const { ApolloServer } = require('apollo-server')
 const { mergeSchemas } = require('graphql-tools')
 const schemaLoader = require('./helpers/schema-loader')
+const httpheaderPlugin = require('./plugins/http-headers-plugin')
 
 /**
  * @param {GraqhQLSchema} localSchema
@@ -17,7 +18,9 @@ module.exports = async ({
   endpointsList,
   apolloServerConfig,
   contextConfig,
-  logger
+  logger,
+  customHeaders = [],
+  plugins = []
 }) => {
   logger = logger || console
 
@@ -38,6 +41,7 @@ module.exports = async ({
   return new ApolloServer({
     ...apolloServerConfig,
     schema: mergedSchemas,
+    plugins: [httpheaderPlugin, ...plugins],
     context: (integrationContext) => ({
       ...integrationContext,
       ...contextConfig,
@@ -45,7 +49,8 @@ module.exports = async ({
       resolveSchema: (schameName) => {
         const remoteSchema = services.find(service => service.name === schameName)
         return remoteSchema.schema
-      }
+      },
+      setHeaders: new Array(...customHeaders)
     })
   })
 }
