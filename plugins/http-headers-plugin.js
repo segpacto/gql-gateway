@@ -9,13 +9,13 @@ module.exports =
           console.warn('headers must be an array of objects in format [{key: headerTitle, value: headerValue}]')
         }
         setHeaders.forEach(({ key, value }) => {
-          requestContext.response.http.headers.append(key, value)
+          requestContext.response.http.headers.set(key, value)
         })
 
         if(requestContext.request.http) {
           requestContext.request.http.headers.forEach((value, key) => {
             if (key.indexOf('x-forwarded') !== -1 || key.indexOf('x-original') !== -1) {
-              requestContext.response.http.headers.append(key, value)
+              requestContext.response.http.headers.set(key, value)
             }
           })
         }
