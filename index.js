@@ -40,7 +40,7 @@ module.exports = async ({
   return new ApolloServer({
     ...apolloServerConfig,
     schema: mergedSchemas,
-    plugins: [...plugins],
+    plugins,
     context: (integrationContext) => ({
       ...integrationContext,
       ...contextConfig,
@@ -49,7 +49,7 @@ module.exports = async ({
         const remoteSchema = services.find(service => service.name === schameName)
         return remoteSchema.schema
       },
-      setHeaders: new Array(...customHeaders)
+      setHeaders: customHeaders
     })
   })
 }
