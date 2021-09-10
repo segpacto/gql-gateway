@@ -7,11 +7,11 @@ describe('get body and headers', () => {
   })
 
   it('should return headers and body with json Content-Type', () => {
-    expect(getBodyHeaders({ test: 'my-body' }, 'json', { 'authorization': 'api-key some-key', 'x-forwarded-port': 8080 })).toStrictEqual(
+    expect(getBodyHeaders({ test: 'my-body' }, 'json', { authorization: 'api-key some-key', 'x-forwarded-port': 8080 })).toStrictEqual(
       {
         headers: {
           'Content-Type': 'application/json',
-          'authorization': 'api-key some-key',
+          authorization: 'api-key some-key',
           'x-forwarded-port': 8080
         },
         body: JSON.stringify({ test: 'my-body' })
@@ -31,7 +31,7 @@ describe('get body and headers', () => {
   })
 
   it('It should proxy only headers to proxy', () => {
-    expect(getBodyHeaders({ test: 'my-body' }, 'application/xml', { 'test': 'test', 'x-forwarded-host': 'http://gql-gateway-test.com' })).toStrictEqual(
+    expect(getBodyHeaders({ test: 'my-body' }, 'application/xml', { test: 'test', 'x-forwarded-host': 'http://gql-gateway-test.com' })).toStrictEqual(
       {
         headers: { 'x-forwarded-host': 'http://gql-gateway-test.com' },
         body: new URLSearchParams({ test: 'my-body' })
