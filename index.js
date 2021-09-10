@@ -17,9 +17,7 @@ module.exports = async ({
   endpointsList,
   apolloServerConfig,
   contextConfig,
-  logger,
-  customHeaders = [],
-  plugins = []
+  logger
 }) => {
   logger = logger || console
 
@@ -40,7 +38,6 @@ module.exports = async ({
   return new ApolloServer({
     ...apolloServerConfig,
     schema: mergedSchemas,
-    plugins,
     context: (integrationContext) => ({
       ...integrationContext,
       ...contextConfig,
@@ -48,8 +45,7 @@ module.exports = async ({
       resolveSchema: (schameName) => {
         const remoteSchema = services.find(service => service.name === schameName)
         return remoteSchema.schema
-      },
-      setHeaders: customHeaders
+      }
     })
   })
 }

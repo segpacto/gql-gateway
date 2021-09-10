@@ -30,19 +30,19 @@ describe('callbackend', () => {
   })
 
   it('x-headers on backend requests should be preserved', async () => {
-    const context = { req: { headers: { authorization: 'Bearer XXXXX', 'x-forwarded': 'http://mops', 'x-original-forwarded-for': '88.88.88.88' } } }
+    const context = { req: { headers: { authorization: 'Bearer XXXXX', 'x-forwarded-host': 'http://gql-gateway-test.com', 'x-original-forwarded-for': '88.88.88.88' } } }
     const requestOptions = { baseUrl: 'http://localhost', path: '/headers' }
     const scope = nock('http://localhost')
       .get('/headers')
       .reply(200)
       .persist()
 
-      scope.on('request', function(req, interceptor, body) {
+    scope.on('request', function (req, interceptor, body) {
       expect(req.headers).toMatchObject({
-        'x-forwarded': ["http://mops"],
+        'x-forwarded-host': ['http://gql-gateway-test.com'],
         'x-original-forwarded-for': ['88.88.88.88']
       })
-    });
-    await callbackend({ context, requestOptions });
+    })
+    await callbackend({ context, requestOptions })
   })
 })

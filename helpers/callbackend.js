@@ -14,17 +14,8 @@ module.exports = async ({ context: { req }, requestOptions }) => {
   if (!req) {
     throw new Error('Request data is not available')
   }
-  // Reading the headers Out of the context since it is not passed automatically
-  const { headers: { authorization } } = req
-  const headers = { authorization }
-  if(req.headers) {
-    Object.entries(req.headers).forEach(([key, value]) => {
-      if (key.indexOf('x-forwarded') !== -1 || key.indexOf('x-original') !== -1) {
-        headers[key] = value
-      }
-    })
-  }
-  const bodyAndHeaders = getBodyAndHeaders(body, bodyType, headers)
+
+  const bodyAndHeaders = getBodyAndHeaders(body, bodyType, req.headers)
 
   const response = await fetch(url, {
     method,
