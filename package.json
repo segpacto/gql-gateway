@@ -1,10 +1,34 @@
 {
+  "name": "gql-gateway",
+  "description": "GraphQL Gateway that does magic on top of REST services that provides Swagger/OpenAPI specifications.",
+  "keywords": [
+    "graphql",
+    "gateway",
+    "swagger"
+  ],
+  "version": "1.0.9",
+  "license": "MIT",
   "author": {
     "name": "Ivan Martinez Pupo",
     "email": "segpacto@yahoo.es"
   },
+  "homepage": "https://github.com/segpacto/gql-gateway#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/segpacto/gql-gateway.git"
+  },
   "bugs": {
     "url": "https://github.com/segpacto/gql-gateway/issues"
+  },
+  "files": [
+    "index.js",
+    "helpers"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "lint:fix": "npx standard --fix",
+    "lint": "npx standard",
+    "test": "jest --coverage --detectOpenHandles --runInBand --testRegex=test/.*\\.spec\\.js --testPathIgnorePatterns=test/mocks/*.js"
   },
   "dependencies": {
     "apollo-server": "^2.9.16",
@@ -14,7 +38,6 @@
     "swagger-to-graphql": "^4.0.2",
     "node-fetch": "^2.6.0"
   },
-  "description": "GraphQL Gateway that does magic on top of REST services that provides Swagger/OpenAPI specifications.",
   "devDependencies": {
     "apollo-server-testing": "^2.9.16",
     "dotenv": "^8.2.0",
@@ -23,32 +46,9 @@
     "nodemon": "^2.0.2",
     "standard": "^14.3.1"
   },
-  "homepage": "https://github.com/segpacto/gql-gateway#readme",
-  "keywords": [
-    "graphql",
-    "gateway",
-    "swagger"
-  ],
-  "license": "MIT",
-  "main": "index.js",
-  "name": "gql-gateway",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/segpacto/gql-gateway.git"
-  },
-  "files": [
-    "index.js",
-    "helpers"
-  ],
-  "scripts": {
-    "lint:fix": "npx standard --fix",
-    "lint": "npx standard",
-    "test": "jest --coverage --detectOpenHandles --runInBand --testRegex=test/.*\\.spec\\.js --testPathIgnorePatterns=test/mocks/*.js"
-  },
   "standard": {
     "env": [
       "jest"
     ]
-  },
-  "version": "1.0.8"
+  }
 }

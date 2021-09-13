@@ -16,7 +16,7 @@ describe('Server construct', () => {
       await gateway({ endpointsList })
     } catch (err) {
       expect(err.code).toBe('ENOTFOUND')
-      expect(err.message).toBe('request to https://no-existent-endpoint/swagger.json failed, reason: getaddrinfo ENOTFOUND no-existent-endpoint no-existent-endpoint:443')
+      expect(err.message).toBe('request to https://no-existent-endpoint/swagger.json failed, reason: getaddrinfo ENOTFOUND no-existent-endpoint')
     }
   })
 

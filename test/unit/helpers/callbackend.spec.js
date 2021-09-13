@@ -1,5 +1,6 @@
 const callbackend = require('./../../../helpers/callbackend')
 require('./../../mocks/gql-gateway-requests')
+const nock = require('nock')
 
 describe('callbackend', () => {
   it('throw error when no req is attached to context', async () => {
@@ -26,5 +27,22 @@ describe('callbackend', () => {
     } catch (err) {
       expect(err.message).toBe('request to http://localhost/client-api/client?=with-error failed, reason: Whatever error')
     }
+  })
+
+  it('x-headers on backend requests should be preserved', async () => {
+    const context = { req: { headers: { authorization: 'Bearer XXXXX', 'x-forwarded-host': 'http://gql-gateway-test.com', 'x-original-forwarded-for': '88.88.88.88' } } }
+    const requestOptions = { baseUrl: 'http://localhost', path: '/headers' }
+    const scope = nock('http://localhost')
+      .get('/headers')
+      .reply(200)
+      .persist()
+
+    scope.on('request', function (req, interceptor, body) {
+      expect(req.headers).toMatchObject({
+        'x-forwarded-host': ['http://gql-gateway-test.com'],
+        'x-original-forwarded-for': ['88.88.88.88']
+      })
+    })
+    await callbackend({ context, requestOptions })
   })
 })
