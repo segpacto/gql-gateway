@@ -20,7 +20,7 @@ describe('agreggation layer', () => {
 
   const GET_CLIENTS = gql`
     query get_clients {
-      get_clients {
+      clients {
         clientId,
         firstName,
         middleName,
@@ -45,7 +45,7 @@ describe('agreggation layer', () => {
           return info.mergeInfo.delegateToSchema({
             schema,
             operation: 'query',
-            fieldName: 'get_reservations_client_clientId',
+            fieldName: 'reservations',
             args: { clientId: client.clientId },
             context,
             info
@@ -66,7 +66,7 @@ describe('agreggation layer', () => {
   it('load clients with aggregations', async () => {
     const { data } = await Query({ query: GET_CLIENTS })
 
-    expect(data.get_clients.length).toBe(2)
-    expect(data.get_clients[0].reservations.data).toEqual(reservations)
+    expect(data.clients.length).toBe(2)
+    expect(data.clients[0].reservations.data).toEqual(reservations)
   })
 })

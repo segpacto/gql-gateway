@@ -77,12 +77,7 @@
                     "404": {
                         "description": "Pet not found"
                     }
-                },
-                "security": [
-                    {
-                        "api_key": []
-                    }
-                ]
+                }
             },
             "post": {
                 "tags": [
@@ -148,12 +143,6 @@
                     "application/xml"
                 ],
                 "parameters": [
-                    {
-                        "name": "api_key",
-                        "in": "header",
-                        "required": false,
-                        "type": "string"
-                    },
                     {
                         "name": "petId",
                         "in": "path",

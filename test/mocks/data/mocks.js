@@ -11,5 +11,16 @@ module.exports = {
   reservations: [{
     reservationId: 12321,
     location: 'My remote location'
-  }]
+  }],
+  pets: [
+    {
+      name: 'pet001',
+      category: {
+        id: '0'
+      },
+      id: '1',
+      photoUrls: [],
+      tags: []
+    }
+  ]
 }

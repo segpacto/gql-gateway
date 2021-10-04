@@ -3,11 +3,21 @@ const nock = require('nock')
 const petStore = 'https://petstore.swagger.io'
 const clientApi = 'http://localhost/client-api'
 const reservationApi = 'http://localhost/reservation-api'
-const { clients, reservations } = require('./data/mocks')
+const { clients, reservations, pets } = require('./data/mocks')
 
 nock(petStore)
   .get('/v2/swagger.json')
   .reply(200, require('./data/swagger-petstore-api.json'))
+  .persist()
+
+nock(petStore)
+  .get('/v2/pet/1')
+  .reply(200, pets[0])
+  .persist()
+
+nock(petStore)
+  .post('/v2/pet')
+  .reply(200)
   .persist()
 
 nock(reservationApi)

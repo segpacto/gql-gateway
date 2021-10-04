@@ -1,5 +1,6 @@
-const { createSchema } = require('swagger-to-graphql')
-const callBackend = require('./callbackend')
+const { createGraphQLSchema } = require('openapi-to-graphql')
+
+const buildHeaders = require('./build-headers')
 const fetch = require('node-fetch')
 
 /**
@@ -22,8 +23,16 @@ module.exports = async ({ localSchema, remoteRestServices }) => {
       swaggerSchema = service.onLoaded(swaggerSchema, service)
     }
 
-    // Keep an schema copy per service
-    service.schema = createSchema({ swaggerSchema, callBackend })
+    /**
+     * A `report` value is part of createGraphQLSchema function returned value
+     * TODO: include into DEBUG mode for future versions
+     */
+    const { schema } = await createGraphQLSchema(swaggerSchema, {
+      fillEmptyResponses: true,
+      headers: buildHeaders
+    })
+
+    service.schema = schema
 
     return service.schema
   })
