@@ -42,6 +42,7 @@ module.exports = async ({
       ...integrationContext,
       ...contextConfig,
       req: integrationContext.req,
+      connection: integrationContext.connection,
       resolveSchema: (schameName) => {
         const remoteSchema = services.find(service => service.name === schameName)
         return remoteSchema.schema
